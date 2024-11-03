@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using TesteAutorizacao.Model.Response;
 
 namespace TesteAutorizacao.Api.Controllers

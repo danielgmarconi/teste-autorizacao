@@ -8,9 +8,7 @@ namespace TesteAutorizacao.Util
     public class JwtTokenFuncao
     {
         public static string GerarTokenUsuario(Int64 userid,
-                                               string country,
                                                string email,
-                                               string SessionGuid,
                                                string privateToken,
                                                int minutesToken)
         {
@@ -19,10 +17,8 @@ namespace TesteAutorizacao.Util
             claims.Add(new Claim("email", email));
             return GerarToken(claims, privateToken, minutesToken);
         }
-        public static string TokenRenovacaoGerar(Int64 userid,
-                                                 string country, 
+        public static string GerarTokenRenovacao(Int64 userid,
                                                  string email,
-                                                 string SessionGuid,
                                                  string privateToken,
                                                  int minutesToken)
         {
