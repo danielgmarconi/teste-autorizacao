@@ -6,15 +6,16 @@ namespace TesteAutorizacao.Api.Controllers
     public class AutorizacaoControllerBase : ControllerBase
     {
         private IConfiguration configuration;
-        protected string GetHeaderOpenId => Request.Headers.TryGetValue("OpenId", out var value) ? value.First() : null;
-        protected string GetOpenId => configuration.GetSection("OpenId").Value;
+        protected string ObterTokenCabecalho => Request.Headers.TryGetValue("Authorization", out var value) ? value.First().Split(' ')[1] : null;
+        protected string ObterOpenIdCabecalho => Request.Headers.TryGetValue("OpenId", out var value) ? value.First() : null;
+        protected string ObterOpenId => configuration.GetSection("OpenId").Value;
         public AutorizacaoControllerBase(IConfiguration _configuration = null) => configuration = _configuration;
         protected IActionResult ExecutaActionResult<T>(Func<T> function, bool IsOpenId = false) where T : class
         {
             try
             {
                 var resultado = new MetodoResponse();
-                if (IsOpenId && !GetOpenId.Equals(GetHeaderOpenId))
+                if (IsOpenId && !ObterOpenId.Equals(ObterOpenIdCabecalho))
                 {
                     resultado.codigoStatus = 403;
                 }

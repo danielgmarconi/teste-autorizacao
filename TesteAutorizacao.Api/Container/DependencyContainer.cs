@@ -8,6 +8,7 @@ namespace TesteAutorizacao.Api.Container
         {
             service.AddHttpClient();
             service.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            service.AddScoped<IAutorizacaoRepository, AutorizacaoRepository>();
         }
     }
 }

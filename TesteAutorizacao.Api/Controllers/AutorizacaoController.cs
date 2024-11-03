@@ -10,17 +10,25 @@ namespace TesteAutorizacao.Api.Controllers
     [ApiController]
     public class AutorizacaoController : AutorizacaoControllerBase
     {
-        private readonly IUsuarioRepository _usuarioRepository;
-        public AutorizacaoController(IConfiguration configuration, IUsuarioRepository usuarioRepository) : base(configuration)
+        private readonly IAutorizacaoRepository _autorizacaoRepository;
+        public AutorizacaoController(IConfiguration configuration, IAutorizacaoRepository autorizacaoRepository) : base(configuration)
         {
-            _usuarioRepository = usuarioRepository;
+            _autorizacaoRepository = autorizacaoRepository;
         }
         [HttpPost]
         [AllowAnonymous]
-        [Route("Inserir")]
-        public IActionResult Inserir(Usuario valor)
+        [Route("AutenticacaoUsuario")]
+        public IActionResult AutenticacaoUsuario(AutorizacaoUsuario valor)
         {
-            return ExecutaActionResult(() => _usuarioRepository.Inserir(ref valor), true);
+            return ExecutaActionResult(() => _autorizacaoRepository.AutenticacaoUsuario(ref valor), false);
+        }
+        [HttpPost]
+        [Authorize]
+        [Route("RenovacaoAutenticacaoUsuario")]
+        public IActionResult RenovacaoAutenticacaoUsuario()
+        {
+            var token = ObterTokenCabecalho;
+            return ExecutaActionResult(() => _autorizacaoRepository.RenovacaoAutenticacaoUsuario(ref token), false);
         }
     }
 }
