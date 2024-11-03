@@ -20,7 +20,7 @@ namespace TesteAutorizacao.Api.Controllers
         [Route("AutenticacaoUsuario")]
         public IActionResult AutenticacaoUsuario(AutorizacaoUsuario valor)
         {
-            return ExecutaActionResult(() => _autorizacaoRepository.AutenticacaoUsuario(ref valor), false);
+            return ExecutaActionResult(() => _autorizacaoRepository.AutenticacaoUsuario(ref valor), true);
         }
         [HttpPost]
         [Authorize]
