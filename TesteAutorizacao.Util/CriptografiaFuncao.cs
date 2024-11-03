@@ -5,7 +5,7 @@ namespace TesteAutorizacao.Util
 {
     public class CriptografiaFuncao
     {
-        //public static string GeneratePublicKey() => Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
+        public static string GerarChavePublica() => Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
         private static byte[] CriarAesChave(string inputString) => Encoding.UTF8.GetByteCount(inputString) == 32 ?
                                                                   Encoding.UTF8.GetBytes(inputString) :
                                                                   SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(inputString));

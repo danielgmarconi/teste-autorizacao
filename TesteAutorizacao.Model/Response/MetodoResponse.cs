@@ -8,10 +8,10 @@ namespace TesteAutorizacao.Model.Response
 {
     public class MetodoResponse
     {
-        public bool success { get; set; }
-        public int statusCode { get; set; }
-        public string message { get; set; }
-        public object response { get; set; }
+        public bool sucesso { get; set; }
+        public int codigoStatus { get; set; }
+        public string mensagem { get; set; }
+        public object resposta { get; set; }
 
     }
 }

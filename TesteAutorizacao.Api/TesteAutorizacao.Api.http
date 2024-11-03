@@ -1,6 +1,0 @@
-@TesteAutorizacao.Api_HostAddress = http://localhost:5111
-
-GET {{TesteAutorizacao.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
