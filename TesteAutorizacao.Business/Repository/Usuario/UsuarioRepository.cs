@@ -35,38 +35,21 @@ namespace TesteAutorizacao.Business.Repository
             resultado.codigoStatus = 201;
             return resultado;
         }
+        public MetodoResponse Buscar(ref Usuario valor)
+        {
+            var resultado = new MetodoResponse();
+            resultado.resposta = UserList(ref valor);
+            resultado.sucesso = true;
+            resultado.codigoStatus = 200;
+            return resultado;
+        }
         public List<Usuario> UserList(ref Usuario valor)
         {
             return DataAccessLayer.ExecuteReader<Usuario>(connectionStringSql, System.Data.CommandType.StoredProcedure, "spUsuarioSelect", valor); 
         }
-        public bool IsExists(Usuario value)
+        public bool IsExists(Usuario valor)
         {
-            return UserList(ref value).Count() > 0;
-        }
-
-        public MetodoResponse CodeResend(ref string email)
-        {
-            var result = new MetodoResponse();
-            //var user = new Users() { Email = email };
-            //user = UserList(ref user).FirstOrDefault();
-            //var code = CodeGeneratorFunction.GenerateSixDigits();
-            //var emailTemplateRequest = new EmailTemplateRequest();
-            //emailTemplateRequest.Email = user.Email;
-            //emailTemplateRequest.EmailTypeSend = "newletter";
-            //emailTemplateRequest.TemplateName = "sendcode";
-            //emailTemplateRequest.SubjectList = new string[] { user.Email.Split("@")[0] };
-            //emailTemplateRequest.MessageList = new string[] { user.Email.Split("@")[0], code };
-            //user.CreationData = null;
-            //user.ModificationDate = null;
-            //user.ModificationUserId = user.Id;
-            //user.RecoveryCode = code;
-            //user.RecoveryCodeExpiration = DateTime.Now.AddMinutes(recoveryCodeExpiration);
-            //DataAccessLayer.ExecuteScalar(connectionStringSql, System.Data.CommandType.StoredProcedure, "spUsersUpdate", user);
-            //new VerisEmailService(GetServiceConfig("VerisEmail"), _httpClientFactory).SendEmailTemplate(emailTemplateRequest);
-            //result.response = user;
-            //result.success = true;
-            //result.statusCode = 200;
-            return result;
+            return UserList(ref valor).Count() > 0;
         }
     }
 }

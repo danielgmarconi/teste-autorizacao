@@ -22,5 +22,12 @@ namespace TesteAutorizacao.Api.Controllers
         {
             return ExecutaActionResult(() => _usuarioRepository.Inserir(ref valor), true);
         }
+        [HttpPost]
+        [Authorize]
+        [Route("Buscar")]
+        public IActionResult Buscar(Usuario valor)
+        {
+            return ExecutaActionResult(() => _usuarioRepository.Buscar(ref valor), false);
+        }
     }
 }

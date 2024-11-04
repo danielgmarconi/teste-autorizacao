@@ -13,6 +13,6 @@ namespace TesteAutorizacao.Business.Repository
         MetodoResponse Inserir(ref Usuario valor);
         List<Usuario> UserList(ref Usuario valor);
         bool IsExists(Usuario valor);
-        MetodoResponse CodeResend(ref string email);
+        MetodoResponse Buscar(ref Usuario valor);
     }
 }
