@@ -17,8 +17,8 @@ namespace TesteAutorizacao.Api.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        [Route("Inserir")]
-        public IActionResult Inserir(Usuario valor)
+        [Route("Criar")]
+        public IActionResult Criar(Usuario valor)
         {
             return ExecutaActionResult(() => _usuarioRepository.Inserir(ref valor), true);
         }
